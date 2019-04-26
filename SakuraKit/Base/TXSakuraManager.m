@@ -154,7 +154,10 @@ static NSMutableArray<TXSakuraName *> *_localSakuras;
     }
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSError *error = nil;
-    NSArray *folders = [fileManager contentsOfDirectoryAtPath:sakuraPath error:&error];
+    NSMutableArray *folders = [fileManager contentsOfDirectoryAtPath:sakuraPath error:&error].mutableCopy;
+    if ([folders containsObject:@"__MACOSX"]) {
+        [folders removeObject:@"__MACOSX"];
+    }
     NSString *folderName = sakuraPath.lastPathComponent;
     NSString *tempName = [folders.lastObject stringByAppendingString:folderName];
     NSString *moveItemPath = [sakuraPath stringByAppendingPathComponent:folders.lastObject];

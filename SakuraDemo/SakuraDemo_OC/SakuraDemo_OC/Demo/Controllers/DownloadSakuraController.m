@@ -36,7 +36,7 @@
     [self.tableView registerNib:[UINib nibWithNibName:identifier bundle:nil] forCellReuseIdentifier:identifier];
     [self.indicatorView startAnimating];
     NSURLSession *session = [NSURLSession sharedSession];
-    NSURL *url = [NSURL URLWithString:@"http://rapapi.org/mockjsdata/21815/theme/list"];
+    NSURL *url = [NSURL URLWithString:@"http://www.rliyu.com:3000/theme/list"];
     if (!url) return;
     self.listDataTask = [session dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (!data || error) return;
